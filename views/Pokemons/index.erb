@@ -2,5 +2,15 @@
 <% @pokemons.each do |pokemon|%>
 <p class="pokemon">
   <a href="/pokemons/<%= pokemon.id %>"><%= pokemon.name %></a>
+
 </p>
 <% end %>
+<a href="/pokemons/new">New Pokemon</a>
+
+<h1>All Trainers</h1>
+<% @trainers.each do |trainer|%>
+<p class="trainer">
+  <a href="/trainers/<%= trainer.id %>"><%= trainer.name %></a>
+</p>
+<% end %>
+<a href="/trainers/new">New Trainer</a>

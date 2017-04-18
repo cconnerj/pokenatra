@@ -5,11 +5,31 @@ require 'active_record'
 require_relative 'db/connection'
 
 require_relative 'models/pokemon'
-# require_relative 'models/trainer'
+require_relative 'models/trainer'
 
 get '/' do
+  @trainers = Trainer.all
   @pokemons = Pokemon.all
   erb :"pokemons/index"
+end
+
+get '/trainers/new' do
+  erb :"trainers/new"
+end
+
+get '/trainers/:id' do
+  @trainer = Trainer.find(params[:id])
+  erb :"trainers/show"
+end
+
+get "/trainers/:id/edit" do
+  @trainer = Trainer.find(params[:id])
+  erb(:"trainers/edit")
+end
+
+post '/trainers' do
+  @trainer = Trainer.create(name: params[:name], level: params[:level], img_url: params[:img_url])
+  redirect "/trainers/#{@trainer.id}"
 end
 
 get '/pokemons/new' do
@@ -36,3 +56,15 @@ put '/pokemons/:id' do
   @pokemon.update(params[:pokemon])
   redirect("/pokemons/#{@pokemon.id}")
 end
+
+put '/trainers/:id' do
+  @trainer = Trainer.find(params[:id])
+  @trainer.update(params[:trainer])
+  redirect("/trainers/#{@trainer.id}")
+end
+
+# delete '/pokemons/:id' do
+#   @pokemon = Pokemon.find(params[:id])
+#   @pokemon.destroy
+#   redirect("/pokemons")
+# end

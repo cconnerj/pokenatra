@@ -3,6 +3,6 @@
   <p>Pokemon's Name: <%= @pokemon.name %></p>
   <p>Pokemon's combat power: <%= @pokemon.cp %></p>
   <p>Pokemon's type: <%= @pokemon.poke_type.capitalize %></p>
-  <p>Pokemon's image: <img src="<%= @pokemon.img_url %>" alt="Pokemon"></p>
+  <p><img src="<%= @pokemon.img_url %>" alt="Pokemon"></p>
   <a href='/pokemons/<%= @pokemon.id %>/edit'>Edit This Pokemon</a>
 </div>

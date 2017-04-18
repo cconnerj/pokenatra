@@ -1,0 +1,7 @@
+<h1><a href="/">All Trainers</a></h2>
+<div class="trainer">
+  <p>Trainer Name: <%= @trainer.name %></p>
+  <p>Trainer level: <%= @trainer.level %></p>
+  <p><img src="<%= @trainer.img_url %>" alt="Pokemon"></p>
+  <a href='/trainers/<%= @trainer.id %>/edit'>Edit This Trainer</a>
+</div>
